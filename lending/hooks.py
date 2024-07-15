@@ -7,14 +7,14 @@ app_license = "GNU General Public License (v3)"
 required_apps = ["erpnext"]
 
 audit_trail_doctypes = [
-	# doctypes that make GL entries require Audit Trail to be maintained
-	# as per the laws applicable to Companies in India
-	"Loan Balance Adjustment",
-	"Loan Disbursement",
-	"Loan Interest Accrual",
-	"Loan Refund",
-	"Loan Repayment",
-	"Loan Write Off",
+    # doctypes that make GL entries require Audit Trail to be maintained
+    # as per the laws applicable to Companies in India
+    "Loan Balance Adjustment",
+    "Loan Disbursement",
+    "Loan Interest Accrual",
+    "Loan Refund",
+    "Loan Repayment",
+    "Loan Write Off",
 ]
 
 
@@ -114,24 +114,24 @@ after_install = "lending.install.after_install"
 # Hook on document methods and events
 
 doc_events = {
-	"Company": {
-		"validate": "lending.overrides.company.validate_loan_tables",
-	}
+    "Company": {
+        "validate": "lending.overrides.company.validate_loan_tables",
+    }
 }
 
 # Scheduled Tasks
 # ---------------
 
 scheduler_events = {
-	"daily_long": [
-		"lending.loan_management.doctype.process_loan_security_shortfall.process_loan_security_shortfall.create_process_loan_security_shortfall",
-		"lending.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_term_loans",
-		"lending.loan_management.doctype.process_loan_classification.process_loan_classification.create_process_loan_classification",
-	],
-	"monthly_long": [
-		"lending.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_demand_loans",
-		"lending.loan_management.doctype.process_loan_restructure_limit.process_loan_restructure_limit.calculate_monthly_restructure_limit",
-	],
+    "daily_long": [
+        "lending.loan_management.doctype.process_loan_security_shortfall.process_loan_security_shortfall.create_process_loan_security_shortfall",
+        "lending.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_term_loans",
+        "lending.loan_management.doctype.process_loan_classification.process_loan_classification.create_process_loan_classification",
+    ],
+    "monthly_long": [
+        "lending.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_demand_loans",
+        "lending.loan_management.doctype.process_loan_restructure_limit.process_loan_restructure_limit.calculate_monthly_restructure_limit",
+    ],
 }
 
 # Testing
@@ -140,8 +140,8 @@ scheduler_events = {
 before_tests = "lending.utils.before_tests"
 
 bank_reconciliation_doctypes = [
-	"Loan Repayment",
-	"Loan Disbursement",
+    "Loan Repayment",
+    "Loan Disbursement",
 ]
 
 # Overriding Methods
@@ -151,22 +151,22 @@ get_matching_queries = "lending.loan_management.utils.get_matching_queries"
 get_amounts_not_reflected_in_system_for_bank_reconciliation_statement = "lending.loan_management.utils.get_amounts_not_reflected_in_system_for_bank_reconciliation_statement"
 
 get_payment_entries_for_bank_clearance = (
-	"lending.loan_management.utils.get_payment_entries_for_bank_clearance"
+    "lending.loan_management.utils.get_payment_entries_for_bank_clearance"
 )
 
 get_entries_for_bank_clearance_summary = (
-	"lending.loan_management.utils.get_entries_for_bank_clearance_summary"
+    "lending.loan_management.utils.get_entries_for_bank_clearance_summary"
 )
 
 get_entries_for_bank_reconciliation_statement = (
-	"lending.loan_management.utils.get_entries_for_bank_reconciliation_statement"
+    "lending.loan_management.utils.get_entries_for_bank_reconciliation_statement"
 )
 
 # ERPNext doctypes for Global Search
 global_search_doctypes = {
-	"Default": [
-		{"doctype": "Loan", "index": 44},
-	],
+    "Default": [
+        {"doctype": "Loan", "index": 44},
+    ],
 }
 
 # override_whitelisted_methods = {
@@ -229,3 +229,4 @@ global_search_doctypes = {
 # auth_hooks = [
 # 	"lending.auth.validate"
 # ]
+export_python_type_annotations = True
